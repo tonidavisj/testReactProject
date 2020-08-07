@@ -10,21 +10,8 @@ mongoose.connect('mongodb://localhost:27017/mernauth', {useNewUrlParser : true, 
     console.log('Connected to bd');
 });
 
-const User = require('./models/user');
-
-const userInput = {
-    username: "tonid",
-    password: "password",
-    role: "admin"
-}
-
-const user = new User(userInput);
-
-user.save((err,document)=>{
-    if(err)
-        console.log(err);
-    console.log(document);
-})
+const userRouter = require('./routes/user');
+app.use('/user', userRouter);
 
 app.listen(5000, ()=> {
     console.log('express server started');

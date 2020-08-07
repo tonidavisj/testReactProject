@@ -35,11 +35,11 @@ userSchema.pre('save', function(next){
 
 //compares the plain text version from the client to the hashed password from the database
 userSchema.methods.comparePassword = function(password, cb){
-    bcrypt.compare(passwrod, this.password, (err,isMatch)=>{
+    bcrypt.compare(password, this.password, (err,isMatch)=>{
         if(err)
             return cb(err)
         else{
-            if(!Match)
+            if(!isMatch)
                 return cb(null, isMatch);
             return cb(null,this);
         }

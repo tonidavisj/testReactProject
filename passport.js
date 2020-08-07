@@ -12,7 +12,7 @@ const cookieExtractor = req =>{
 }
 
 //authorization 
-passport.user(new JwtStrategy({
+passport.use(new JwtStrategy({
     jwtFromRequest : cookieExtractor,
     secretOrKey : "gtechproject"
 },(payload,done)=>{
